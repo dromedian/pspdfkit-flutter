@@ -124,13 +124,17 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   static final ThemeData lightTheme = ThemeData(
-      backgroundColor: Colors.transparent,
-      primaryColor: Colors.black,
+      colorScheme: ColorScheme.fromSwatch().copyWith(
+        background: Colors.transparent,  // Questo sostituisce backgroundColor
+        primary: Colors.black,            // Sostituisce primaryColor
+      ),
       dividerColor: Colors.grey[400]);
 
   static final ThemeData darkTheme = ThemeData(
-      backgroundColor: Colors.transparent,
-      primaryColor: Colors.white,
+      colorScheme: ColorScheme.fromSwatch().copyWith(
+        background: Colors.transparent,  // Questo sostituisce backgroundColor
+        primary: Colors.white,            // Sostituisce primaryColor
+      ),
       dividerColor: Colors.grey[800]);
   String _frameworkVersion = '';
   ThemeData currentTheme = lightTheme;
@@ -652,7 +656,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
           color: Colors.grey[200],
           padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
           child: Text(_pspdfkitWidgetExamples,
-              style: currentTheme.textTheme.headline4?.copyWith(
+              style: currentTheme.textTheme.headlineLarge?.copyWith(
                   fontSize: _fontSize, fontWeight: FontWeight.bold))),
       ListTile(
           title: const Text(_basicExample),
@@ -699,10 +703,10 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
             onTap: () => annotationProcessingExample()),
       // The import Instant JSON example is supported by iOS only for now.
       // if (PlatformUtils.isCupertino(context))
-        ListTile(
-            title: const Text(_importInstantJsonExample),
-            subtitle: const Text(_importInstantJsonExampleSub),
-            onTap: () => importInstantJsonExample()),
+      ListTile(
+          title: const Text(_importInstantJsonExample),
+          subtitle: const Text(_importInstantJsonExampleSub),
+          onTap: () => importInstantJsonExample()),
       // The push two PspdfWidgets simultaneously example is supported by iOS only for now.
       if (PlatformUtils.isCupertino(context))
         ListTile(
@@ -717,7 +721,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
           color: Colors.grey[200],
           padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
           child: Text(_pspdfkitGlobalPluginExamples,
-              style: currentTheme.textTheme.headline4?.copyWith(
+              style: currentTheme.textTheme.headlineLarge?.copyWith(
                   fontSize: _fontSize, fontWeight: FontWeight.bold))),
       ListTile(
           title: const Text(_basicExampleGlobal),
@@ -771,7 +775,7 @@ class ExampleListView extends StatelessWidget {
           padding: const EdgeInsets.only(top: 24),
           child: Center(
               child: Text(frameworkVersion,
-                  style: themeData.textTheme.headline4?.copyWith(
+                  style: themeData.textTheme.headlineLarge?.copyWith(
                       fontSize: _fontSize,
                       fontWeight: FontWeight.bold,
                       color: themeData.primaryColor)))),
